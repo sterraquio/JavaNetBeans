@@ -22,7 +22,7 @@ public class PersonaDao {
     
     //Login usuario
     public Persona loginQuery(String user, String password){
-        String query="SELECT * FROM persona WHERE user=? AND password=?";
+        String query="SELECT * FROM personas WHERE user=? AND password=?";
         Persona unaPersona= new Persona();
         
         try{

@@ -45,6 +45,7 @@ public class ControlLogin implements ActionListener {
                 if (this.unaPersona.getUser() != null) {
                     if (this.unaPersona.getCedula() == 1) {
                         JOptionPane.showMessageDialog(this.vista, "SOS el admin 😎");
+                        this.vistaPersona = new VistaPersona();
                         this.vistaPersona.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(this.vista, "USTED NO ES EL ADMINNNMM");
