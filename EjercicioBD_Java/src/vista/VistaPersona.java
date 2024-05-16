@@ -144,10 +144,10 @@ public class VistaPersona extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordFieldPassword;
-    private javax.swing.JTextField jTextFieldCedula;
-    private javax.swing.JTextField jTextFieldEdad;
-    private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldUser;
+    public javax.swing.JPasswordField jPasswordFieldPassword;
+    public javax.swing.JTextField jTextFieldCedula;
+    public javax.swing.JTextField jTextFieldEdad;
+    public javax.swing.JTextField jTextFieldNombre;
+    public javax.swing.JTextField jTextFieldUser;
     // End of variables declaration//GEN-END:variables
 }

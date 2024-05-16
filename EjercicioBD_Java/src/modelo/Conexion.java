@@ -10,8 +10,10 @@ public class Conexion {
     //Atributos
     //Se coloca en "" el nombre de la base de datos
     private String db_panaderia = "panaderia";
+    //Nombre de usuario de la base de datos
     private String user = "root";
-    private String password = "univalle";
+    //Contraseña para acceder a la base de datos
+    private String password = "";
     //generico
     private String url = "jdbc:mysql://localhost:3306/" + db_panaderia;
 

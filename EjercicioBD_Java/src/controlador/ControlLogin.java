@@ -23,8 +23,7 @@ public class ControlLogin implements ActionListener {
         this.unaPersona = new Persona();
         this.unaPersonaDao = new PersonaDAO();
         this.vista = new VistaLogin();
-        this.vista.setVisible(false);
-        this.vistaPersona.setVisible(true);
+        this.vista.setVisible(true);
 
         this.vista.jButtonIngresar.addActionListener(this);
     }
@@ -40,16 +39,17 @@ public class ControlLogin implements ActionListener {
             //validar que los campos no estén vacíos
             if (!this.user.equals("") || !this.password.equals("")) {
                 //Se pasan los parámetros al método loginConsulta
-                this.unaPersona= this.unaPersonaDao.LoginConsulta(this.user, this.password);
-                
+                this.unaPersona = this.unaPersonaDao.LoginConsulta(this.user, this.password);
+
                 //Verificar si los datos son válidos
-                if(this.unaPersona.getUser()!= null){
-                if(this.unaPersona.getCedula() ==1 ){
-                JOptionPane.showMessageDialog(this.vista, "SOS el admin 😎");
-                }else{
-                JOptionPane.showMessageDialog(this.vista, "USTED NO ES EL ADMINNNMM");
-                }
-                }else{
+                if (this.unaPersona.getUser() != null) {
+                    if (this.unaPersona.getCedula() == 1) {
+                        JOptionPane.showMessageDialog(this.vista, "SOS el admin 😎");
+                        this.vistaPersona.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(this.vista, "USTED NO ES EL ADMINNNMM");
+                    }
+                } else {
                     JOptionPane.showMessageDialog(this.vista, "NO EXISTE EL USUARIOOOOOOOOOOOO");
                 }
             } else {
