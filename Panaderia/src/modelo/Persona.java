@@ -10,10 +10,8 @@ public class Persona {
     private String creado;
     private String actualizado;
     
-    //constructor sin parámetros
     public Persona(){}
 
-    //contructor con parámetros
     public Persona(int cedula, String nombres, int edad, String user, String password, String creado, String actualizado) {
         this.cedula = cedula;
         this.nombres = nombres;
@@ -23,8 +21,6 @@ public class Persona {
         this.creado = creado;
         this.actualizado = actualizado;
     }
-    
-    //Getters an Setters
 
     public int getCedula() {
         return cedula;
@@ -83,4 +79,5 @@ public class Persona {
     }
     
     
+
 }

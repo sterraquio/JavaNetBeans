@@ -3,30 +3,27 @@ package modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 public class Conexion {
-    //atributos
-    private String db_panaderia="panaderia";
+    private String db_nombre="db_panaderia";
     private String user="root";
-    private String password="";
-    private String url="jdbc:mysql://localhost:3306/"+db_panaderia;
+    private String password="univalle";
+    private String url="jdbc:mysql://localhost:3306/"+this.db_nombre;
     
-    Connection conexion= null;
+    Connection conexion = null;
     
-    public Connection obtenerConexion(){
+    public Connection obtenerconexion(){
         try{
-            //Obtener el valor del driver
+            //obtener valor del driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-            //Obtener conexión DB
+            //obtener la conexión
             conexion = DriverManager.getConnection(this.url, this.user, this.password);
-        
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Ha ocurrido una excepcion SQLException: "+e.getMessage());
         }catch(ClassNotFoundException e){
-            JOptionPane.showMessageDialog(null, "Ha ocurrido una excepcion ClassNotFoundException: "+e.getMessage());
+            System.out.println("Ha ocurrido un ClassNotFoundException "+e.getMessage());
+        }catch(SQLException e){
+            System.out.println("Ha ocurrido un SQLException");
         }
-        return conexion;
-    }
-    
+        
+        return conexion;            
+    }    
 }

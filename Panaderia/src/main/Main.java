@@ -2,9 +2,9 @@ package main;
 
 import control.ControlLogin;
 
-public class Principal {
+public class Main {
     
-    public static void main(String []args){
+    public static void main(String args[]){
         ControlLogin ctrlLogin= new ControlLogin();
     }
 }

@@ -4,17 +4,22 @@
  */
 package vista;
 
+import control.ControlLogin;
+import modelo.Persona;
+import modelo.PersonaDao;
+
 /**
  *
- * @author UNIVALLE
+ * @author PROF-REC-TEC
  */
 public class VistaLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VistaLogin
-     */
+   Persona unaPersona=new Persona();
+   PersonaDao unaPersonaDao= new PersonaDao();
+    
     public VistaLogin() {
         initComponents();
+        //ControlLogin controlLog= new ControlLogin(unaPersona, unaPersonaDao, this);
     }
 
     /**
@@ -26,21 +31,23 @@ public class VistaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jbl_user = new javax.swing.JLabel();
-        jbl_pwd = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jtf_user = new javax.swing.JTextField();
         jpf_pwd = new javax.swing.JPasswordField();
         jbtn_ingresar = new javax.swing.JButton();
 
+        jTextField1.setText("jTextField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Login - Panaderia");
+        setTitle("Login Persona");
 
-        jbl_user.setText("User: ");
+        jLabel1.setText("User:");
 
-        jbl_pwd.setText("Password: ");
+        jLabel2.setText("Password: ");
 
         jbtn_ingresar.setText("Ingresar");
-        jbtn_ingresar.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -49,35 +56,35 @@ public class VistaLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
+                        .addGap(86, 86, 86)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbl_pwd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jpf_pwd))
+                                .addComponent(jLabel1)
+                                .addGap(47, 47, 47)
+                                .addComponent(jtf_user, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbl_user)
-                                .addGap(38, 38, 38)
-                                .addComponent(jtf_user, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jpf_pwd))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
+                        .addGap(139, 139, 139)
                         .addComponent(jbtn_ingresar)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addGap(98, 98, 98)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbl_user)
+                    .addComponent(jLabel1)
                     .addComponent(jtf_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbl_pwd)
+                    .addComponent(jLabel2)
                     .addComponent(jpf_pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(53, 53, 53)
                 .addComponent(jbtn_ingresar)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,8 +127,9 @@ public class VistaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jbl_pwd;
-    private javax.swing.JLabel jbl_user;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTextField1;
     public javax.swing.JButton jbtn_ingresar;
     public javax.swing.JPasswordField jpf_pwd;
     public javax.swing.JTextField jtf_user;
