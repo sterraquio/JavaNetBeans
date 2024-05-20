@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Conexion {
     private String db_nombre="db_panaderia";
     private String user="root";
-    private String password="univalle";
+    private String password="";
     private String url="jdbc:mysql://localhost:3306/"+this.db_nombre;
     
     Connection conexion = null;

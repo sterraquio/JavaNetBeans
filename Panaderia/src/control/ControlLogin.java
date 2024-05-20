@@ -16,6 +16,8 @@ public class ControlLogin implements ActionListener{
     public ControlLogin(/*Persona unaPersona, PersonaDao unaPersonaDao, VistaLogin vistaLogin*/) {
         this.unaPersona = new Persona();
         this.unaPersonaDao = new PersonaDao();
+        
+        //Se crea la vista
         this.vistaLogin = new VistaLogin();
         this.vistaLogin.setVisible(true);
         
@@ -37,8 +39,7 @@ public class ControlLogin implements ActionListener{
                 //verifiar si los datos son válidos
                 if(this.unaPersona.getUser() != null){
                     if(this.unaPersona.getCedula() == 1){
-                        VistaPersona vistaPersona= new VistaPersona();
-                        vistaPersona.setVisible(true);
+                        ControlPersona vistaPersona= new ControlPersona();                        
                         this.vistaLogin.dispose();
                     }else{
                         JOptionPane.showMessageDialog(null,"Pailas No Es Admin X_X");

@@ -77,6 +77,8 @@ public class PersonaDao {
             pst.setTimestamp(7, fechaHora);
             pst.execute();
             
+            System.out.println(pst);
+            
             return true;
         }catch(SQLException e){
             
@@ -86,21 +88,50 @@ public class PersonaDao {
         
     }
     
-    //Listar personas
-    public List listarPesonas(String value){
-        List<Persona> listaPersonas = new ArrayList();
-        String query = "SELECT * FROM pesona ORDER BY edad ASC";
-        String query_Busqueda = "SELEC * FROM persona WHERE id="+value;
+    //Consultar Persona
+    public Persona consultarQuery(int ced){
+        String query = "SELECT * FROM persona WHERE id = ?";
+        Persona persona= new Persona();
         
         try{
             this.con= this.miConexion.obtenerconexion();
-            if(value.equalsIgnoreCase("")){
-                pst= this.con.prepareStatement(query);
-                rs= pst.executeQuery();
+            pst = this.con.prepareStatement(query);
+            
+            //se pasan los parametro ingresados por el usuario
+            pst.setInt(1, ced);
+            System.out.println("contenido del query:\n"+pst);
+            rs= pst.executeQuery();
+            
+            if(rs.next()){
+                persona.setCedula(rs.getInt("id"));
+                cedula_persona= persona.getCedula();
+                persona.setNombres(rs.getString("nombres"));
+                nombres_persona= persona.getNombres();
+                persona.setEdad(rs.getInt("edad"));
+                edad_persona= persona.getEdad();
+                persona.setUser(rs.getString("user"));
+                user_persona= persona.getUser();
             }else{
-                pst= this.con.prepareStatement(query_Busqueda);
-                rs= pst.executeQuery();
+                JOptionPane.showMessageDialog(null, "Usuario no Encontrado");
             }
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al obtener los datos de la persona: "+e);
+        }
+        
+        return persona;
+    }
+    
+    //Listar personas
+    public List listarPesonas(){
+        List<Persona> listaPersonas = new ArrayList();
+        String query = "SELECT * FROM persona ORDER BY nombres ASC";
+                
+        try{
+            this.con= this.miConexion.obtenerconexion();
+            
+            pst= this.con.prepareStatement(query);
+            rs= pst.executeQuery();            
             
             while(rs.next()){
                 Persona unaPersona= new Persona();
@@ -122,7 +153,7 @@ public class PersonaDao {
     //Modificar Persona
     public boolean actualizarPersona(Persona unaPersona){
         String query= "UPDATE persona SET nombres=?, edad=?, user=?, actualizado=?"
-                + "WHERE id=?)";
+                + "WHERE id=?";
         Timestamp fechaHora = new Timestamp(new Date().getTime());
         
         try{
@@ -134,12 +165,13 @@ public class PersonaDao {
             pst.setString(3, unaPersona.getUser());
             pst.setTimestamp(4, fechaHora);
             pst.setInt(5, unaPersona.getCedula());
+            System.out.println(pst);
             pst.execute();
             
             return true;
         }catch(SQLException e){
             
-            JOptionPane.showMessageDialog(null, "Error al modificar los datos: "+e);
+            JOptionPane.showMessageDialog(null, "Error al modificar los datos (Clase DAO):\n"+e);
             return false;
         }
         
@@ -154,6 +186,7 @@ public class PersonaDao {
             this.con= this.miConexion.obtenerconexion();
             //Pasar la consulta
             pst = this.con.prepareStatement(query);
+            System.out.println(pst);
             //Ejecutar la consulta
             pst.execute();
             
