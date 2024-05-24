@@ -11,7 +11,7 @@ public class Restaurante {
         Semaphore estufa = new Semaphore(2);
         Cocinero[] cocineros = new Cocinero[3];
         
-        int numeroClientes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de Clientes"));
+        int numeroClientes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de Clientes"));
         
         for (int i = 0; i < cocineros.length; i++) {
             cocineros[i] = new Cocinero(estufa);

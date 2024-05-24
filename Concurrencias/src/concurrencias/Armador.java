@@ -10,7 +10,7 @@ public class Armador implements Runnable {
     public void entregarPedido() {
         try {
             sArmador.acquire();
-            System.out.println("Armador arma el sándwich.");
+            System.out.println("Armador arma el sandwich.");
             Thread.sleep((long) (Math.random() * 1000));
             System.out.println("Armador entrega el pedido al cliente.");
             mutex.acquire();
