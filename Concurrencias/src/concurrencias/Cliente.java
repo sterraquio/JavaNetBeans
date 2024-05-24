@@ -1,8 +1,9 @@
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+package concurrencias;
 
-class Cliente implements Runnable {
+
+
+
+public class Cliente implements Runnable {
     public Cajero cajero;
     public Armador armador;
     public Cocinero[] cocineros;
@@ -34,55 +35,7 @@ class Cliente implements Runnable {
     }
 }
 
-class Cajero {
-    private Lock lock = new ReentrantLock();
 
-    public void realizarOrden(Cliente cliente) throws InterruptedException {
-        lock.lock();
-        try {
-            System.out.println("Cajero toma la orden de " + cliente.nombre);
-            // Realiza la transacción
-            Thread.sleep(1000); // Simula el proceso de pago
-            System.out.println("Cajero cobra a " + cliente.nombre);
-        } finally {
-            lock.unlock();
-        }
-    }
-}
-
-class Cocinero implements Runnable {
-    private Semaphore estufa;
-
-    public Cocinero(Semaphore estufa) {
-        this.estufa = estufa;
-    }
-
-    @Override
-    public void run() {
-        try {
-            while (true) {
-                estufa.acquire();
-                // Cocina la carne
-                Thread.sleep(2000); // Simula cocinar
-                estufa.release();
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-class Armador {
-    private Semaphore panes = new Semaphore(0);
-
-    public void agregarPan() throws InterruptedException {
-        panes.release();
-    }
-
-    public void tomarPan() throws InterruptedException {
-        panes.acquire();
-    }
-}
 
 
 
