@@ -56,7 +56,7 @@ public class Cliente implements Runnable {
 
             if (quiereONoquiere() == 1) {
                 lechuga = "quiere lechuga";
-                this.tiempoPedido = 4;
+                this.TiempoLechuga = 4;
             } else {
                 lechuga = "no quiere lechuga";
 
