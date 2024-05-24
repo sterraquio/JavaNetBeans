@@ -4,12 +4,10 @@ import java.util.concurrent.Semaphore;
 
 public class Cocinero implements Runnable {
     private static Semaphore sCocinero = new Semaphore(0);
-    private static Semaphore sEstufa;
-    private static int basePanDisponible = 0;
-    private static Semaphore sArmador = new Semaphore(0);
+    private Semaphore sEstufa;
 
     public Cocinero(Semaphore estufa) {
-        sEstufa = estufa;
+        this.sEstufa = estufa;
     }
 
     @Override
@@ -17,16 +15,11 @@ public class Cocinero implements Runnable {
         try {
             while (true) {
                 sCocinero.acquire();
-                // Cocina la carne
                 System.out.println(Thread.currentThread().getName() + " comienza a cocinar la carne.");
                 Thread.sleep((long) (Math.random() * 1000));
-                // Pone la carne sobre una base de pan si hay disponible
                 sEstufa.acquire();
-                basePanDisponible++;
                 System.out.println(Thread.currentThread().getName() + " pone la carne en una base de pan.");
-                if (basePanDisponible >= 1) {
-                    sArmador.release();
-                }
+                Armador.agregarBasePan();
                 sEstufa.release();
             }
         } catch (InterruptedException e) {

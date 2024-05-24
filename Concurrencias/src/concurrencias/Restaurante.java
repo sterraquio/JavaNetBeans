@@ -1,4 +1,4 @@
-    package concurrencias;
+package concurrencias;
 
 import javax.swing.JOptionPane;
 import java.util.concurrent.Semaphore;
@@ -26,3 +26,4 @@ public class Restaurante {
         }
     }
 }
+

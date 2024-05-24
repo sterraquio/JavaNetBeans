@@ -8,11 +8,11 @@ public class Cajero {
 
     public void recibirPedido(String pedido) {
         try {
-            sCajero.acquire();
-            this.orden = pedido;
+            orden = pedido;
             System.out.println("Cajero recibe el pedido: " + pedido + " y cobra.");
-            sCajero.release();
-        } catch (InterruptedException e) {
+            // Procesa el pedido y avisa a los cocineros
+            Cocinero.cocinar();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
