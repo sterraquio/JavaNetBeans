@@ -1,6 +1,6 @@
 package concurrencias;
 
-
+import javax.swing.JOptionPane;
 import java.util.concurrent.Semaphore;
 
 public class Restaurante {
@@ -10,6 +10,10 @@ public class Restaurante {
         Armador armador = new Armador();
         Semaphore estufa = new Semaphore(2);
         Cocinero[] cocineros = new Cocinero[3];
+        
+        
+        int Clientes = Cantidad
+        
         for (int i = 0; i < cocineros.length; i++) {
             cocineros[i] = new Cocinero(estufa);
             Thread t = new Thread(cocineros[i]);
@@ -27,5 +31,13 @@ public class Restaurante {
         t1.start();
         t2.start();
         t3.start();
+    }
+    
+    
+    public int CantidadClientes (){
+        int CantidadClientes = Integer.parseInt(JOptionPane.showInputDialog("ingrese el numero de Clientes"));
+        
+        return CantidadClientes;
+        
     }
 }
