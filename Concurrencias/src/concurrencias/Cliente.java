@@ -11,12 +11,19 @@ public class Cliente implements Runnable {
     private String pedido = "";
 
     String dobleCarne;
+    int TiempoCarne = 0;
     String Picante;
+    int TiempoPicante = 0;
     String lechuga;
+    int TiempoLechuga = 0;
     String Tomate;
+    int TiempoTomate = 0;
     String Cebolla;
+    int TiempoCebolla = 0;
     String Salsas;
+    int TimepoSalsas = 0;
     int quiereOno;
+    int tiempoPedido = 1;
 
     public Cliente(String nombre, Cajero cajero, Armador armador, Cocinero[] cocineros) {
         this.nombre = nombre;
@@ -29,41 +36,53 @@ public class Cliente implements Runnable {
     @Override
     public void run() {
         try {
+            
+            
             //Casos para saber si quiere doble carne, picante, lechuga 
             if (quiereONoquiere() == 1) {
                 dobleCarne = "quiere doble carne";
+                this.TiempoCarne = 2;
             } else {
                 dobleCarne = "no quiere doble carne";
+                this.TiempoCarne = 1;
             }
 
             if (quiereONoquiere() == 1) {
                 Picante = "quiere picante";
+                this.TiempoPicante = 1;
             } else {
                 Picante = "No quiere picante";
             }
 
             if (quiereONoquiere() == 1) {
                 lechuga = "quiere lechuga";
+                this.tiempoPedido = 4;
             } else {
                 lechuga = "no quiere lechuga";
+
             }
             if (quiereONoquiere() == 1) {
                 Tomate = "quiere tomate";
+                this.TiempoTomate = 1;
             } else {
-                Tomate = "no quiere tomate";
+
             }
 
             if (quiereONoquiere() == 1) {
                 Cebolla = "quiere cebolla";
+                this.TiempoCebolla = 1;
             } else {
                 Cebolla = "no quiere cebolla";
             }
 
             if (quiereONoquiere() == 1) {
                 Salsas = "quiere salsas";
+                this.TimepoSalsas = 1;
             } else {
                 Salsas = "no quiere salsas";
             }
+
+            tiempoPedido = TiempoCarne + TiempoCebolla + TiempoLechuga + TiempoPicante + TiempoTomate + TimepoSalsas;
 
             // El cliente llega
             System.out.println(nombre + " llega al restaurante.");
@@ -92,4 +111,23 @@ public class Cliente implements Runnable {
 
         return quiereOno;
     }
+            
+
+    public int getTiempoPedido() {
+        return tiempoPedido;
+    }
+
+    public void setTiempoPedido(int tiempoPedido) {
+        this.tiempoPedido = tiempoPedido;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
 }
+
