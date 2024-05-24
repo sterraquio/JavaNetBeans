@@ -33,7 +33,7 @@ public class Cliente implements Runnable {
             if (quiereONoquiere() == 1) {
                 dobleCarne = "quiere doble carne";
             } else {
-                dobleCarne = "no Quiere doble carne";
+                dobleCarne = "no quiere doble carne";
             }
 
             if (quiereONoquiere() == 1) {
