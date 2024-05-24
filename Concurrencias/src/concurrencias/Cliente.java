@@ -1,13 +1,12 @@
 package concurrencias;
 
-
-
+import java.util.concurrent.Semaphore;
 
 public class Cliente implements Runnable {
-    public Cajero cajero;
-    public Armador armador;
-    public Cocinero[] cocineros;
-    public String nombre;
+    private String nombre;
+    private Cajero cajero;
+    private Armador armador;
+    private Cocinero[] cocineros;
 
     public Cliente(String nombre, Cajero cajero, Armador armador, Cocinero[] cocineros) {
         this.nombre = nombre;
@@ -19,23 +18,23 @@ public class Cliente implements Runnable {
     @Override
     public void run() {
         try {
+            // El cliente llega
             System.out.println(nombre + " llega al restaurante.");
-
-            // Realiza su orden
-            cajero.realizarOrden(this);
-
-            // Espera por su comida
-            System.out.println(nombre + " espera su comida.");
-            Thread.sleep(2000); // Simula comer
-            System.out.println(nombre + " termina de comer y deja un comentario en el libro de visitas.");
-
+            // Hace un pedido
+            String pedido = "Pedido de " + nombre;
+            System.out.println(nombre + " hace un pedido: " + pedido);
+            cajero.recibirPedido(pedido);
+            // Espera a que le entreguen su pedido
+            armador.entregarPedido();
+            // Recibe y come su pedido
+            System.out.println(nombre + " recibe y come su pedido.");
+            // Deja un comentario
+            Thread.sleep((long) (Math.random() * 1000));
+            System.out.println(nombre + " deja un comentario en el libro de visitas.");
+            // Se va del restaurante
+            System.out.println(nombre + " se va del restaurante.");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 }
-
-
-
-
-

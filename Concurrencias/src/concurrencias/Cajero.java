@@ -1,20 +1,23 @@
 package concurrencias;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.Semaphore;
 
 public class Cajero {
-    private Lock lock = new ReentrantLock();
+    private Semaphore sCajero = new Semaphore(0);
+    private String orden;
 
-    public void realizarOrden(Cliente cliente) throws InterruptedException {
-        lock.lock();
+    public void recibirPedido(String pedido) {
         try {
-            System.out.println("Cajero toma la orden de " + cliente.nombre);
-            // Realiza la transacción
-            Thread.sleep(1000); // Simula el proceso de pago
-            System.out.println("Cajero cobra a " + cliente.nombre);
-        } finally {
-            lock.unlock();
+            sCajero.acquire();
+            this.orden = pedido;
+            System.out.println("Cajero recibe el pedido: " + pedido + " y cobra.");
+            sCajero.release();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+    }
+
+    public String getOrden() {
+        return orden;
     }
 }
