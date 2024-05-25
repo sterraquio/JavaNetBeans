@@ -42,46 +42,46 @@ public class Cliente implements Runnable {
             // Crear una instancia de Cocinero y pasar el nombre del cliente como parámetro
             //Casos para saber si quiere doble carne, picante, lechuga 
             if (quiereONoquiere() == 1) {
-                dobleCarne = "quiere doble carne";
+                dobleCarne = "||quiere doble carne||";
                 this.TiempoCarne = 2;
             } else {
-                dobleCarne = "no quiere doble carne";
+                dobleCarne = "||no quiere doble carne||";
                 this.TiempoCarne = 1;
             }
 
             if (quiereONoquiere() == 1) {
-                Picante = "quiere picante";
+                Picante = "||quiere picante||";
                 this.TiempoPicante = 1;
             } else {
-                Picante = "No quiere picante";
+                Picante = "||No quiere picante||";
             }
 
             if (quiereONoquiere() == 1) {
-                lechuga = "quiere lechuga";
+                lechuga = "||quiere lechuga||";
                 this.TiempoLechuga = 4;
             } else {
-                lechuga = "no quiere lechuga";
+                lechuga = "||no quiere lechuga||";
 
             }
             if (quiereONoquiere() == 1) {
-                Tomate = "quiere tomate";
+                Tomate = "||quiere tomate||";
                 this.TiempoTomate = 1;
             } else {
 
             }
 
             if (quiereONoquiere() == 1) {
-                Cebolla = "quiere cebolla";
+                Cebolla = "||quiere cebolla||";
                 this.TiempoCebolla = 1;
             } else {
-                Cebolla = "no quiere cebolla";
+                Cebolla = "||no quiere cebolla||";
             }
 
             if (quiereONoquiere() == 1) {
-                Salsas = "quiere salsas";
+                Salsas = "||quiere salsas||";
                 this.TimepoSalsas = 1;
             } else {
-                Salsas = "no quiere salsas";
+                Salsas = "||no quiere salsas||";
             }
 
             tiempoPedido = TiempoCarne + TiempoCebolla + TiempoLechuga + TiempoPicante + TiempoTomate + TimepoSalsas;
