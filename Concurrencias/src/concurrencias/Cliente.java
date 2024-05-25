@@ -9,6 +9,7 @@ public class Cliente implements Runnable {
     private Armador armador;
     private Cocinero[] cocineros;
     private String pedido = "";
+    private Cocinero cocinerito;
 
     String dobleCarne;
     int TiempoCarne = 0;
@@ -30,6 +31,7 @@ public class Cliente implements Runnable {
         this.cajero = cajero;
         this.armador = armador;
         this.cocineros = cocineros;
+        
 
     }
 
@@ -94,7 +96,8 @@ public class Cliente implements Runnable {
             // Espera a que le entreguen su ped/home/camilotr/Documentos/GitHub/JavaNetBeans/Concurrencias/src/concurrencias/Cliente.java:106ido
             armador.entregarPedido();
             // Recibe y come su pedido
-            System.out.println(nombre + " recibe y come su pedido.");
+            System.out.println(nombre + " recibe y come su pedido con "+ nombre + " " + dobleCarne + " " + Picante + " " + lechuga
+                    + " " + Tomate + " " + Cebolla + " " + Salsas +".");
             // Deja un comentario
             Thread.sleep((long) (Math.random() * 10000));
             System.out.println(nombre + " deja un comentario en el libro de visitas.");
