@@ -36,8 +36,8 @@ public class Cliente implements Runnable {
     @Override
     public void run() {
         try {
-            
-            
+
+            // Crear una instancia de Cocinero y pasar el nombre del cliente como parámetro
             //Casos para saber si quiere doble carne, picante, lechuga 
             if (quiereONoquiere() == 1) {
                 dobleCarne = "quiere doble carne";
@@ -91,7 +91,7 @@ public class Cliente implements Runnable {
                     + " " + Tomate + " " + Cebolla + " " + Salsas;
             System.out.println(nombre + " hace un pedido: " + pedido);
             cajero.recibirPedido(pedido);
-            // Espera a que le entreguen su pedido
+            // Espera a que le entreguen su ped/home/camilotr/Documentos/GitHub/JavaNetBeans/Concurrencias/src/concurrencias/Cliente.java:106ido
             armador.entregarPedido();
             // Recibe y come su pedido
             System.out.println(nombre + " recibe y come su pedido.");
@@ -102,6 +102,11 @@ public class Cliente implements Runnable {
             System.out.println(nombre + " se va del restaurante.");
         } catch (InterruptedException e) {
             e.printStackTrace();
+
+            Cocinero cocinero = new Cocinero(TiempoCarne);
+            Thread tCocinero = new Thread(cocinero);
+            tCocinero.start();
+
         }
     }
 
@@ -111,7 +116,6 @@ public class Cliente implements Runnable {
 
         return quiereOno;
     }
-            
 
     public int getTiempoPedido() {
         return tiempoPedido;
@@ -130,4 +134,3 @@ public class Cliente implements Runnable {
     }
 
 }
-

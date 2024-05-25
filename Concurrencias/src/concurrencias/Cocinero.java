@@ -6,7 +6,7 @@ public class Cocinero implements Runnable {
 
     private static Semaphore sCocinero = new Semaphore(0);
     private Semaphore sEstufa;
-    private Cliente cliente;
+    private int nombreCliente;
 
     private String Pedido = "";
 
@@ -14,9 +14,8 @@ public class Cocinero implements Runnable {
         this.sEstufa = estufa;
     }
 
-    public Cocinero(Semaphore estufa, Cliente cliente) {
-        this.sEstufa = estufa;
-        this.cliente = cliente;
+    public Cocinero( int nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
     @Override
@@ -24,8 +23,8 @@ public class Cocinero implements Runnable {
         try {
             while (true) {
                 sCocinero.acquire();
-                System.out.println(Thread.currentThread().getName() + " comienza a cocinar El pedido Del Cliente" + this.cliente.getNombre());
-                Thread.sleep((long) (this.cliente.getTiempoPedido() * 1000));
+                System.out.println(Thread.currentThread().getName() + " comienza a cocinar El pedido Del Cliente" + this.nombreCliente);
+                Thread.sleep((long) (Math.random() * 1000));
                 sEstufa.acquire();
                 System.out.println(Thread.currentThread().getName() + " pone la carne en una base de pan.");
                 Armador.agregarBasePan();
