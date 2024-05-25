@@ -23,8 +23,8 @@ public class Cocinero implements Runnable {
         try {
             while (true) {
                 sCocinero.acquire();
-                System.out.println(Thread.currentThread().getName() + " comienza a cocinar El pedido Del Cliente" + this.nombreCliente);
-                Thread.sleep((long) (Math.random() * 1000));
+                System.out.println(Thread.currentThread().getName() + " comienza a cocinar");
+                Thread.sleep((long) (Math.random() * 10000));
                 sEstufa.acquire();
                 System.out.println(Thread.currentThread().getName() + " pone la carne en una base de pan.");
                 Armador.agregarBasePan();

@@ -96,7 +96,7 @@ public class Cliente implements Runnable {
             // Recibe y come su pedido
             System.out.println(nombre + " recibe y come su pedido.");
             // Deja un comentario
-            Thread.sleep((long) (Math.random() * 1000));
+            Thread.sleep((long) (Math.random() * 10000));
             System.out.println(nombre + " deja un comentario en el libro de visitas.");
             // Se va del restaurante
             System.out.println(nombre + " se va del restaurante.");

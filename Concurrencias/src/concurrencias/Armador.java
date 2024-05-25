@@ -11,7 +11,7 @@ public class Armador implements Runnable {
         try {
             sArmador.acquire();
             System.out.println("Armador arma el sandwich.");
-            Thread.sleep((long) (Math.random() * 1000));
+            Thread.sleep((long) (Math.random() * 10000));
             System.out.println("Armador entrega el pedido al cliente.");
             mutex.acquire();
             basePanDisponible--;
